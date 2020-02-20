@@ -79,6 +79,23 @@
 
     <div class="container my-2 page hiddent fixed-bottom" id="page-ctrl"><div class="container">
         <div class="row">
+            <div class="col col-6 col-md-3 col-lg-3">
+                <button type="button" name="do_save" id="do_save" class="btn btn-sm btn-success">导出</button>
+                <button type="button" name="do_resort" id="do_resort" class="btn btn-sm btn-primary">重新排序</button>
+            </div>
+            <div class="col col-6 col-md-3 col-lg-3">
+                <button type="button" name="do_toogle_annotated" id="do_toogle_annotated" class="btn btn-sm btn-success">切换已标/未标</button>
+            </div>
+            <div class="col col-6 col-md-3 col-lg-3">
+                <button type="button" name="do_select_all_annotated" id="do_select_all_annotated" class="btn btn-sm btn-info">全选已标</button>
+                <button type="button" name="do_select_all_not_annotated" id="do_select_all_not_annotated" class="btn btn-sm btn-info">全选未标</button>
+            </div>
+            <div class="col col-6 col-md-3 col-lg-3">
+                <button type="button" name="do_addselect_all_annotated" id="do_addselect_all_annotated" class="btn btn-sm btn-info">增all已标</button>
+                <button type="button" name="do_addselect_all_not_annotated" id="do_addselect_all_not_annotated" class="btn btn-sm btn-info">增all未标</button>
+            </div>
+        </div>
+        <div class="row">
             <div class="col col-3 col-md-2">
                 <select class="custom-select custom-select-sm" name="task-select" id="task-select">
                     <option>类型</option>
@@ -104,7 +121,6 @@
                 <button type="button" name="do_select_neg" id="do_select_neg" class="btn btn-sm btn-primary">反选</button>
                 <button type="button" name="do_select_all" id="do_select_all" class="btn btn-sm btn-info">全选</button>
                 <button type="button" name="do_select_non" id="do_select_non" class="btn btn-sm btn-info">全消</button>
-                <button type="button" name="do_save" id="do_save" class="btn btn-sm btn-success">导出</button>
             </div>
         </div>
     </div></div>
@@ -140,6 +156,7 @@
         // document.getElementById("file-input").addEventListener("change", onChangeFile, false);
         // document.getElementById("do_import").addEventListener("click", onImport, false);
         d3.select("#do_import").on('click',()=>{onImport();});
+        d3.select("#do_resort").on('click',()=>{the_vue.Ss.sort(function(a,b){return a.sortID-b.sortID;});});
         d3.select("#do_select_non").on('click',()=>{
             d3.selectAll(".cxn-ctrol.selected .custom-checkbox .cxn-checkbox").each(function(e, i) {
                 this.click();
@@ -157,6 +174,61 @@
             d3.selectAll(".cxn-ctrol .custom-checkbox .cxn-checkbox").each(function(e, i) {
                 this.click();
             });
+        });
+        d3.select("#do_select_all_not_annotated").on('click',()=>{
+            d3.selectAll(".btn_stc_confirm_1.btn-danger")
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .selectAll(".cxn-ctrol.selected .custom-checkbox .cxn-checkbox")
+                .each(function(e, i) {
+                    this.click();
+                });
+            d3.selectAll(".btn_stc_confirm_1.btn-danger")
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .selectAll(".cxn-ctrol .custom-checkbox .cxn-checkbox")
+                .each(function(e, i) {
+                    this.click();
+                });
+        });
+        d3.select("#do_select_all_annotated").on('click',()=>{
+            d3.selectAll(".btn_stc_confirm_1.btn-light")
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .selectAll(".cxn-ctrol.selected .custom-checkbox .cxn-checkbox")
+                .each(function(e, i) {
+                    this.click();
+                });
+            d3.selectAll(".btn_stc_confirm_1.btn-light")
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .selectAll(".cxn-ctrol .custom-checkbox .cxn-checkbox")
+                .each(function(e, i) {
+                    this.click();
+                });
+        });
+        d3.select("#do_toogle_annotated").on('click',()=>{
+            d3.selectAll(".cxn-ctrol.selected")
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(function(){return this.parentNode;})
+                .select(".btn_stc_confirm_1")
+                .each(function(e, i) {
+                    this.click();
+                })
+            ;
         });
         d3.select("#task-select").on('change',()=>{
             let optn = d3.select("#task-option").node().value;
