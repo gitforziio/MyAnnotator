@@ -207,7 +207,7 @@ Vue.component('sentence-control', {
                             <button type="button" class="btn btn-sm btn-danger btn_stc_confirm" v-on:click="S.editing=false">确认</button>
                         </div>
                         <div class="col-4 btn_stc_wrap mr-auto">
-                            <button type="button" class="btn btn-sm btn_stc_confirm" :class="[S.annotated ? 'btn-light' : '', 'btn-danger']"" v-on:click="S.annotated=(1-S.annotated)">{{ S.annotated ? '已标' : '未标' }}</button>
+                            <button type="button" class="btn btn-sm btn_stc_confirm" :class="[S.annotated ? 'btn-light' : 'btn-danger']"" v-on:click="S.annotated=(1-S.annotated)">{{ S.annotated ? '已标' : '未标' }}</button>
                         </div>
                     </div>
                     <div class="row" :class="{hidden:S.editing}">
@@ -221,7 +221,7 @@ Vue.component('sentence-control', {
                             <button type="button" class="btn btn-sm btn-info btn_stc_edit" v-on:click="S.editing=true">重切</button>
                         </div>
                         <div class="col-4 btn_stc_wrap mr-auto">
-                            <button type="button" class="btn btn-sm btn_stc_confirm btn_stc_confirm_1" :class="[S.annotated ? 'btn-light' : '', 'btn-danger']"" v-on:click="S.annotated=(1-S.annotated)">{{ S.annotated ? '已标' : '未标' }}</button>
+                            <button type="button" class="btn btn-sm btn_stc_confirm btn_stc_confirm_1" :class="[S.annotated ? 'btn-light' : 'btn-danger']"" v-on:click="S.annotated=(1-S.annotated)">{{ S.annotated ? '已标' : '未标' }}</button>
                         </div>
                     </div>
                 </div></div>
